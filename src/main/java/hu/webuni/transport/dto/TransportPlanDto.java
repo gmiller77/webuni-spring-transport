@@ -2,42 +2,46 @@ package hu.webuni.transport.dto;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-
-@Entity
 public class TransportPlanDto {
 
-	private long id;
-	
+	private Long transportPlanId;
+
 	private long income;
-	private List<SectionDto> routeSections;
-	
+	private List<SectionDto> routeSectionDtos;
+
 	public TransportPlanDto() {
 		super();
 	}
-	public TransportPlanDto(Long income, List<SectionDto> routeSections) {
+
+	public TransportPlanDto(Long transportPlanId, long income, List<SectionDto> routeSectionDtos) {
 		super();
+		this.transportPlanId = transportPlanId;
 		this.income = income;
-		this.routeSections = routeSections;
+		this.routeSectionDtos = routeSectionDtos;
 	}
-	public Long getId() {
-		return id;
+
+	public Long getTransportPlanId() {
+		return transportPlanId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setTransportPlanId(Long transportPlanId) {
+		this.transportPlanId = transportPlanId;
 	}
-	public Long getIncome() {
+
+	public long getIncome() {
 		return income;
 	}
-	public void setIncome(Long income) {
+
+	public void setIncome(long income) {
 		this.income = income;
 	}
-	public List<SectionDto> getRouteSections() {
-		return routeSections;
+
+	public List<SectionDto> getRouteSectionDtos() {
+		return routeSectionDtos;
 	}
-	public void setRouteSections(List<SectionDto> routeSections) {
-		this.routeSections = routeSections;
+
+	public void setRouteSectionDtos(List<SectionDto> routeSectionDtos) {
+		this.routeSectionDtos = routeSectionDtos;
 	}
-	
-	
+
 }

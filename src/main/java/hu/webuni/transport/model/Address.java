@@ -9,8 +9,8 @@ public class Address {
 
 	@Id
 	@GeneratedValue
-	private long id;
-	
+	private Long addressId;
+
 	private String countryISOCode;
 	private String cityName;
 	private String streetName;
@@ -18,7 +18,9 @@ public class Address {
 	private int houseNumber;
 	private double latitude;
 	private double longitude;
-	
+
+//	@OneToOne ???
+//	Milestone milestone
 	
 	public Address() {
 		super();
@@ -36,12 +38,13 @@ public class Address {
 		this.longitude = longitude;
 	}
 
-	public Long getId() {
-		return id;
+
+	public Long getAddressId() {
+		return addressId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAddressId(Long addressId) {
+		this.addressId = addressId;
 	}
 
 	public String getCountryISOCode() {
@@ -99,6 +102,5 @@ public class Address {
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	
-	
+
 }

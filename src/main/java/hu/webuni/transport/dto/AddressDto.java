@@ -1,30 +1,28 @@
 package hu.webuni.transport.dto;
 
-import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
-@Entity
 public class AddressDto {
 
-	private long id;
-	
-	@Size(min = 2, max = 2)
+	private Long addressId;
+
+//	TODO addressDto validation messages
+	@Size(min = 2, max = 2, message = "country ISO code must be 2-character long")
 	private String countryISOCode;
-	@NotBlank
+	@NotBlank(message = "City name must contain value.")
 	private String cityName;
-	@NotBlank
+	@NotBlank(message = "Street name must contain value.")
 	private String streetName;
-	@NotBlank
+	@NotBlank(message = "ZIP code contain value.")
 	private String zipCode;
-	@Positive
+	@Positive(message = "House number must be a positive number.")
 	private int houseNumber;
-	
+
 	private double latitude;
 	private double longitude;
-	
-	
+
 	public AddressDto() {
 		super();
 	}
@@ -41,12 +39,12 @@ public class AddressDto {
 		this.longitude = longitude;
 	}
 
-	public Long getId() {
-		return id;
+	public long getAddressId() {
+		return addressId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAddressId(long addressId) {
+		this.addressId = addressId;
 	}
 
 	public String getCountryISOCode() {
@@ -104,6 +102,5 @@ public class AddressDto {
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-	
-	
+
 }

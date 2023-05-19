@@ -2,6 +2,8 @@ package hu.webuni.transport.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MilestoneRepository extends JpaRepository<MilestoneRepository, Long> {
+import hu.webuni.transport.model.Milestone;
+
+public interface MilestoneRepository extends JpaRepository<Milestone, Long> {
 
 }

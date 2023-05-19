@@ -1,37 +1,38 @@
 package hu.webuni.transport.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
-@Entity
 public class SectionDto {
-	
-	private long id;
-	
+
+	private Long sectionId;
+
 	@PositiveOrZero
 	private int number;
-	
-	private MilestoneDto fromMilestone;
-	private MilestoneDto toMilestone;
-	
+
+	private MilestoneDto fromMilestoneDto;
+	private MilestoneDto toMilestoneDto;
+
 	public SectionDto() {
 		super();
 	}
 
-	public SectionDto(@Positive int number, MilestoneDto fromMilestone, MilestoneDto toMilestone) {
+
+	public SectionDto(Long sectionId, @PositiveOrZero int number, MilestoneDto fromMilestoneDto,
+			MilestoneDto toMilestoneDto) {
 		super();
+		this.sectionId = sectionId;
 		this.number = number;
-		this.fromMilestone = fromMilestone;
-		this.toMilestone = toMilestone;
+		this.fromMilestoneDto = fromMilestoneDto;
+		this.toMilestoneDto = toMilestoneDto;
 	}
 
-	public Long getId() {
-		return id;
+
+	public Long getSectionId() {
+		return sectionId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setSectionId(Long sectionId) {
+		this.sectionId = sectionId;
 	}
 
 	public int getNumber() {
@@ -42,21 +43,20 @@ public class SectionDto {
 		this.number = number;
 	}
 
-	public MilestoneDto getFromMilestone() {
-		return fromMilestone;
+	public MilestoneDto getFromMilestoneDto() {
+		return fromMilestoneDto;
 	}
 
-	public void setFromMilestone(MilestoneDto fromMilestone) {
-		this.fromMilestone = fromMilestone;
+	public void setFromMilestoneDto(MilestoneDto fromMilestoneDto) {
+		this.fromMilestoneDto = fromMilestoneDto;
 	}
 
-	public MilestoneDto getToMilestone() {
-		return toMilestone;
+	public MilestoneDto getToMilestoneDto() {
+		return toMilestoneDto;
 	}
 
-	public void setToMilestone(MilestoneDto toMilestone) {
-		this.toMilestone = toMilestone;
+	public void setToMilestoneDto(MilestoneDto toMilestoneDto) {
+		this.toMilestoneDto = toMilestoneDto;
 	}
-	
 
 }

@@ -2,46 +2,45 @@ package hu.webuni.transport.dto;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-
-@Entity
 public class MilestoneDto {
-	
-	private long id;
-	
-	private AddressDto address;
+
+	private Long milestoneId;
+
+	private AddressDto addressDto;
 	private LocalDateTime plannedTime;
-	
+
 	public MilestoneDto() {
 		super();
 	}
-	public MilestoneDto(AddressDto address, LocalDateTime plannedTime) {
+
+	public MilestoneDto(AddressDto addressDto, LocalDateTime plannedTime) {
 		super();
-		this.address = address;
+		this.addressDto = addressDto;
 		this.plannedTime = plannedTime;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getMilestoneId() {
+		return milestoneId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setMilestoneId(Long milestoneId) {
+		this.milestoneId = milestoneId;
 	}
 
-	public AddressDto getAddress() {
-		return address;
+	public AddressDto getAddressDto() {
+		return addressDto;
 	}
-	public void setAddress(AddressDto address) {
-		this.address = address;
+
+	public void setAddressDto(AddressDto addressDto) {
+		this.addressDto = addressDto;
 	}
+
 	public LocalDateTime getPlannedTime() {
 		return plannedTime;
 	}
+
 	public void setPlannedTime(LocalDateTime plannedTime) {
 		this.plannedTime = plannedTime;
 	}
-	
-	
-	
+
 }
