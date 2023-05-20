@@ -41,4 +41,10 @@ public class AddressService {
 		return addressRepository.save(address);
 	}
 
+	public Address update(Address address) {
+		if(!addressRepository.existsById(address.getAddressId()))
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		return addressRepository.save(address);
+	}
+
 }

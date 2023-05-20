@@ -11,7 +11,7 @@ import hu.webuni.transport.model.Address;
 public interface AddressMapper {
 
 	AddressDto addressToDto(Address address);
-	Address DtoToAddress(AddressDto addressDto);
+	Address dtoToAddress(AddressDto addressDto);
 	List<AddressDto> addressesToDtos(List<Address> addresses);
 	List<Address> dtosToAddresses(List<AddressDto> addressesDto);
 }
