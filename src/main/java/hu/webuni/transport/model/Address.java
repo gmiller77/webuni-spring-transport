@@ -12,32 +12,31 @@ public class Address {
 	private Long addressId;
 
 	private String countryISOCode;
-	private String cityName;
-	private String streetName;
 	private String zipCode;
+	private String city;
+	private String street;
 	private int houseNumber;
 	private double latitude;
 	private double longitude;
 
 //	@OneToOne ???
 //	Milestone milestone
-	
+
 	public Address() {
 		super();
 	}
 
-	public Address(String countryISOCode, String cityName, String streetName, String zipCode, int houseNumber,
-			double latitude, double longitude) {
+	public Address(String countryISOCode, String zipCode, String city, String street, int houseNumber, double latitude,
+			double longitude) {
 		super();
 		this.countryISOCode = countryISOCode;
-		this.cityName = cityName;
-		this.streetName = streetName;
 		this.zipCode = zipCode;
+		this.city = city;
+		this.street = street;
 		this.houseNumber = houseNumber;
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-
 
 	public Long getAddressId() {
 		return addressId;
@@ -55,28 +54,28 @@ public class Address {
 		this.countryISOCode = countryISOCode;
 	}
 
-	public String getCityName() {
-		return cityName;
-	}
-
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
-	}
-
-	public String getStreetName() {
-		return streetName;
-	}
-
-	public void setStreetName(String streetName) {
-		this.streetName = streetName;
-	}
-
 	public String getZipCode() {
 		return zipCode;
 	}
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
 	}
 
 	public int getHouseNumber() {

@@ -37,6 +37,14 @@ public class Section {
 		this.toMilestone = toMilestone;
 	}
 
+	public Section(int number, Milestone fromMilestone, Milestone toMilestone, TransportPlan transportPlan) {
+		super();
+		this.number = number;
+		this.fromMilestone = fromMilestone;
+		this.toMilestone = toMilestone;
+		this.transportPlan = transportPlan;
+	}
+
 	public Long getSectionId() {
 		return sectionId;
 	}
