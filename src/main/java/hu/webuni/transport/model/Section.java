@@ -77,4 +77,10 @@ public class Section {
 		this.toMilestone = toMilestone;
 	}
 
+	@Override
+	public String toString() {
+		return "Section [sectionId=" + sectionId + ", number=" + number + ", fromMilestone=" + fromMilestone
+				+ ", toMilestone=" + toMilestone + ", transportPlan=" + transportPlan + "]";
+	}
+
 }

@@ -102,4 +102,11 @@ public class Address {
 		this.longitude = longitude;
 	}
 
+	@Override
+	public String toString() {
+		return "Address [addressId=" + addressId + ", countryISOCode=" + countryISOCode + ", zipCode=" + zipCode
+				+ ", city=" + city + ", street=" + street + ", houseNumber=" + houseNumber + ", latitude=" + latitude
+				+ ", longitude=" + longitude + "]";
+	}
+
 }

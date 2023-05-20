@@ -3,6 +3,8 @@ package hu.webuni.transport.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,8 +40,17 @@ public class AddressController {
 		return addressMapper.addressToDto(address);
 	}
 
+	//TODO JWT auth for DELETE address
+	@DeleteMapping("/{id}")
+	public ResponseEntity<AddressDto> deleteAddress(@PathVariable Long id) {
+			addressService.delete(id);
+		return ResponseEntity.ok(null);
+	}
+	
+	//TODO JWT auth for POST address
 	@PostMapping
 	public AddressDto createAddress(@RequestBody @Valid AddressDto addressDto) {
+		System.out.println(addressDto.toString());
 		return addressMapper.addressToDto(addressService.save(addressMapper.DtoToAddress(addressDto)));
 	}
 

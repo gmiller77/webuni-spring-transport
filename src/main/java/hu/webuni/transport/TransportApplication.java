@@ -21,6 +21,8 @@ public class TransportApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		initDBService.initDB();
+		
+		//TODO set JWT token to 1 month 
 	}
 
 }

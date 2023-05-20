@@ -29,7 +29,6 @@ public class TransportPlan {
 		this.routeSections = routeSections;
 	}
 
-
 	public long getTransportPlanId() {
 		return transportPlanId;
 	}
@@ -52,6 +51,12 @@ public class TransportPlan {
 
 	public void setRouteSections(List<Section> routeSections) {
 		this.routeSections = routeSections;
+	}
+
+	@Override
+	public String toString() {
+		return "TransportPlan [transportPlanId=" + transportPlanId + ", income=" + income + ", routeSections="
+				+ routeSections + "]";
 	}
 
 }

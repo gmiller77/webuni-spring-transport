@@ -54,4 +54,9 @@ public class Milestone {
 		this.plannedTime = plannedTime;
 	}
 
+	@Override
+	public String toString() {
+		return "Milestone [milestoneId=" + milestoneId + ", address=" + address + ", plannedTime=" + plannedTime + "]";
+	}
+
 }
