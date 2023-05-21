@@ -3,6 +3,9 @@ package hu.webuni.transport.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -61,16 +64,47 @@ public class AddressController {
 	@PutMapping("/{id}")
 	public ResponseEntity<AddressDto> updateAddress(@PathVariable Long id, @RequestBody @Valid AddressDto addressDto) {
 		if (addressDto == null)
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"No data in the BODY.");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No data in the BODY.");
 		if (addressDto.getAddressId() != null && addressDto.getAddressId() != id)
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"AddressId field exists but DIFFERS from URL 'id' pathvariable.");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+					"AddressId field exists but DIFFERS from URL 'id' pathvariable.");
 		addressDto.setAddressId(id);
 		Address updatedAddress = addressService.update(addressMapper.dtoToAddress(addressDto));
 		return ResponseEntity.ok(addressMapper.addressToDto(updatedAddress));
 	}
 
 	/*
-	 * TODO: addreesController POST / DELETE / PUT w/ JWT
+	 * TODO: JWT function to POST / DELETE / PUT methods
 	 */
+	
+//	TODO check if DTO is empty	
+	@PostMapping("/search")
+	public ResponseEntity<List<AddressDto>> getByParams(@RequestBody AddressDto addressDto, Pageable page) {
 
+		if (addressDto == null)
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Search BODY is NULL");
+
+		boolean hasValidData = hasValidData(addressDto.getCountryISOCode(), addressDto.getCity(),
+				addressDto.getZipCode(), addressDto.getStreet());
+
+		if (!hasValidData)
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+					"There is BODY, but NO valuable data for searching.");
+
+		Page<Address> addressListPaged = addressService.findAddressByExample(addressMapper.dtoToAddress(addressDto), page);
+		List<AddressDto> listAddress = addressMapper.addressesToDtos(addressListPaged.getContent());
+
+		HttpHeaders headers = new HttpHeaders();
+	    headers.add("X-Total-Count", Long.toString(addressListPaged.getTotalElements()));
+		
+		return new ResponseEntity<>(listAddress, headers, HttpStatus.OK);
+	}
+
+	public static boolean hasValidData(String str1, String str2, String str3, String str4) {
+		return isNotBlank(str1) || isNotBlank(str2) || isNotBlank(str3) || isNotBlank(str4);
+	}
+
+	private static boolean isNotBlank(String str) {
+		return str != null && !str.trim().isEmpty();
+	}
 }

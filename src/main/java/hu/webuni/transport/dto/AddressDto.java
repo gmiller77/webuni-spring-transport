@@ -14,7 +14,7 @@ public class AddressDto {
 	private String countryISOCode;
 	@NotBlank(message = "City name must contain value.")
 	private String city;
-	@NotBlank(message = "ZIP code contain value.")
+	@NotBlank(message = "ZIP code must contain value.")
 	private String zipCode;
 	@NotBlank(message = "Street name must contain value.")
 	private String street;

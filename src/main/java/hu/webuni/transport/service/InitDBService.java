@@ -62,46 +62,57 @@ public class InitDBService {
 				.save(new Address("HU", "1204", "Komló", "Maláta árok", 4, Double.valueOf(44), Double.valueOf(44)));
 
 		Address a05 = addressRepository
-				.save(new Address("HU", "1205", "Dréherfalva", "Árpás köz", 5, Double.valueOf(55), Double.valueOf(55)));
+				.save(new Address("HU", "1205", "Dréherfalva", "Dreher köz", 5, Double.valueOf(55), Double.valueOf(55)));
 
 		// DE
-		Address a06 = addressRepository.save(
-				new Address("DE", "11006", "München", "Lager Strasse", 6, Double.valueOf(55), Double.valueOf(55)));
+		Address a06 = addressRepository
+				.save(new Address("DE", "11006", "München", "Lager Strasse", 6, Double.valueOf(55), Double.valueOf(55)));
 
 		Address a07 = addressRepository
 				.save(new Address("DE", "22007", "Bremen", "Dunkel Str.", 7, Double.valueOf(66), Double.valueOf(66)));
 
-		Address a08 = addressRepository.save(
-				new Address("DE", "33008", "Düsseldorf", "WeissBier Str.", 8, Double.valueOf(77), Double.valueOf(77)));
+		Address a08 = addressRepository
+				.save(new Address("DE", "33008", "Düsseldorf", "WeissBier Str.", 8, Double.valueOf(77), Double.valueOf(77)));
 
-		Address a09 = addressRepository.save(
-				new Address("DE", "44009", "Mainz", "German Pilsner Str.", 9, Double.valueOf(88), Double.valueOf(88)));
+		Address a09 = addressRepository
+				.save(new Address("DE", "44009", "Mainz", "German Pilsner Str.", 9, Double.valueOf(88), Double.valueOf(88)));
 
-		Address a10 = addressRepository.save(
-				new Address("DE", "55010", "Mainz", "German Pilsner Str.", 10, Double.valueOf(88), Double.valueOf(88)));
+		Address a10 = addressRepository
+				.save(new Address("DE", "55010", "Mainz", "German Pilsner Str.", 10, Double.valueOf(88), Double.valueOf(88)));
 
 		// GB
-		Address a11 = addressRepository.save(
-				new Address("GB", "LL11-1LL", "London", "Porter Street", 11, Double.valueOf(11), Double.valueOf(99)));
+		Address a11 = addressRepository
+				.save(new Address("GB", "LL11-1LL", "London", "Porter Street", 11, Double.valueOf(11), Double.valueOf(99)));
 
-		Address a12 = addressRepository.save(new Address("GB", "EE22-2EE", "Edinburgh", "Scotch Ale Road", 12,
-				Double.valueOf(12), Double.valueOf(21)));
+		Address a12 = addressRepository
+				.save(new Address("GB", "EE22-2EE", "Edinburgh", "Scotch Ale Road", 12, Double.valueOf(12), Double.valueOf(21)));
 
-		Address a13 = addressRepository.save(
-				new Address("GB", "GG33-3GG", "Glasgow", "Stout Square", 13, Double.valueOf(32), Double.valueOf(23)));
+		Address a13 = addressRepository
+				.save(new Address("GB", "GG33-3GG", "Glasgow", "Stout Square", 13, Double.valueOf(32), Double.valueOf(23)));
 
-		Address a14 = addressRepository.save(
-				new Address("GB", "MM44-4MM", "Machester", "Guiness Str.", 14, Double.valueOf(43), Double.valueOf(34)));
+		Address a14 = addressRepository
+				.save(new Address("GB", "MM44-4MM", "Machester", "Guiness Str.", 14, Double.valueOf(43), Double.valueOf(34)));
 
-		Address a15 = addressRepository.save(new Address("GB", "BB55-5B", "Birmingham", "Indian Pale Ale Str.", 15,
-				Double.valueOf(55), Double.valueOf(55)));
+		Address a15 = addressRepository
+				.save(new Address("GB", "BB55-5BB", "Birmingham", "Indian Pale Ale Str.", 15, Double.valueOf(55), Double.valueOf(55)));
 
+		// EXTRA HUN
+		Address a16 = addressRepository
+				.save(new Address("HU", "1206", "Dréherszentlászló", "Dreher dűlő", 4, Double.valueOf(44), Double.valueOf(44)));
+
+		Address a17 = addressRepository
+				.save(new Address("HU", "1207", "Szeged", "Dreher fasor", 5, Double.valueOf(55), Double.valueOf(55)));
+		
+		
 		// TODO correct DateTimes for test calculations
 		Milestone ms01 = milestoneRepository.save(new Milestone(a01, LocalDateTime.now().plusMinutes(100)));
 		Milestone ms02 = milestoneRepository.save(new Milestone(a02, LocalDateTime.now().plusMinutes(200)));
 		Milestone ms03 = milestoneRepository.save(new Milestone(a03, LocalDateTime.now().plusMinutes(300)));
 		Milestone ms04 = milestoneRepository.save(new Milestone(a04, LocalDateTime.now().plusMinutes(400)));
 		Milestone ms05 = milestoneRepository.save(new Milestone(a05, LocalDateTime.now().plusMinutes(500)));
+		//lately added extra HUN addresses
+		Milestone ms16 = milestoneRepository.save(new Milestone(a16, LocalDateTime.now().plusMinutes(600)));
+		Milestone ms17 = milestoneRepository.save(new Milestone(a17, LocalDateTime.now().plusMinutes(700)));
 
 		Milestone ms06 = milestoneRepository.save(new Milestone(a06, LocalDateTime.now().plusMinutes(250)));
 		Milestone ms07 = milestoneRepository.save(new Milestone(a07, LocalDateTime.now().plusMinutes(350)));
@@ -122,6 +133,8 @@ public class InitDBService {
 		sectionList.add(sectionRepository.save(new Section(1, ms02, ms03, plan1)));
 		sectionList.add(sectionRepository.save(new Section(2, ms03, ms04, plan1)));
 		sectionList.add(sectionRepository.save(new Section(3, ms04, ms05, plan1)));
+		sectionList.add(sectionRepository.save(new Section(4, ms05, ms16, plan1)));
+		sectionList.add(sectionRepository.save(new Section(5, ms16, ms17, plan1)));
 		plan1.setRouteSections(sectionList);
 		transportPlanRepository.save(plan1);
 		sectionList.clear();
