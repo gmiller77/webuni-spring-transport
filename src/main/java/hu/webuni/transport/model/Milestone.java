@@ -30,11 +30,11 @@ public class Milestone {
 		this.plannedTime = plannedTime;
 	}
 
-	public long getMilestoneId() {
+	public Long getMilestoneId() {
 		return milestoneId;
 	}
 
-	public void setMilestoneId(long milestoneId) {
+	public void setMilestoneId(Long milestoneId) {
 		this.milestoneId = milestoneId;
 	}
 

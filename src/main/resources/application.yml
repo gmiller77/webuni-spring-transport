@@ -1,0 +1,22 @@
+spring:
+  mvc:
+    format:
+      date-time: yy-MM-dd HH:mm:ss
+  datasource:
+    url: jdbc:postgresql://localhost:5432/transport
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+
+transport:
+  delayChargeList:
+    - minutes: 30
+      percent: 10
+    - minutes: 60
+      percent: 15
+    - minutes: 120
+      percent: 20

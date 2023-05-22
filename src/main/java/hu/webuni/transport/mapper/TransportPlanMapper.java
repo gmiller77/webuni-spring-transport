@@ -1,5 +1,7 @@
 package hu.webuni.transport.mapper;
 
+import java.util.List;
+
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,5 +20,7 @@ public interface TransportPlanMapper {
 //	@Mapping(source = "routeSectionDtos", target = "routeSections")
 	@Mapping(target = "routeSections", ignore = true)
 	TransportPlan dtoToTransportPlan(TransportPlanDto transportPlanDto);
+
+	List<TransportPlanDto> transportPlansToDtos(List<TransportPlan> findAll);
 
 }
