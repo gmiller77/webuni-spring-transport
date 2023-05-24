@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/transportPlans")
 public class TransportPlanController {
 
-	private static final String HAS_AUTHORITY_ROLE_TRANSPORT_MGR = "hasAuthority('ROLE_TRANSPORT_MGR')";
+	private static final String HAS_AUTHORITY_ROLE_TRANSPORT_MANAGER = "hasAuthority('ROLE_TransportManager')";
 
 	@Autowired
 	TransportPlanService transportPlanService;
@@ -38,7 +38,8 @@ public class TransportPlanController {
 
 	// HOTO add JWT auth
 	@PostMapping("/{id}/delay")
-	@PreAuthorize(HAS_AUTHORITY_ROLE_TRANSPORT_MGR)
+	@PreAuthorize(HAS_AUTHORITY_ROLE_TRANSPORT_MANAGER)
+//	@PreAuthorize("hasRole('TransportManager')")
 	public void registringDelay(@PathVariable long id, @Valid @RequestBody DelayDto delayDto) {
 
 		transportPlanService.registerDelay(id, delayDto);

@@ -42,15 +42,15 @@ public class SecurityConfig {
 	    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 	    manager.createUser(User.withUsername("address_mgr")
 	      .password(passwordEncoder().encode("address"))
-	      .roles("ADDRESS_MGR")
+	      .roles("AddressManager")
 	      .build());
 	    manager.createUser(User.withUsername("transport_mgr")
 	      .password(passwordEncoder().encode("transport"))
-	      .roles("TRANSPORT_MGR")
+	      .roles("TransportManager")
 	      .build());
 	    manager.createUser(User.withUsername("admin")
 	    		.password(passwordEncoder().encode("admin"))
-	    		.roles("ADDRESS_MGR", "TRANSPORT_MGR")
+	    		.roles("AddressManager", "TransportManager")
 	    		.build());
 	    return manager;
 	}

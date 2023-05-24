@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +29,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/addresses")
 public class AddressController {
 
-	private static final String HAS_AUTHORITY_ROLE_ADDRESS_MGR = "hasAuthority('ROLE_ADDRESS_MGR')";
+	private static final String HAS_AUTHORITY_ROLE_ADDRESS_MANAGER = "hasAuthority('ROLE_AddressManager')";
 
 	@Autowired
 	AddressService addressService;
@@ -50,25 +49,25 @@ public class AddressController {
 		return addressMapper.addressToDto(address);
 	}
 
-	// TODO fix JWT auth for DELETE address
 	@DeleteMapping("/{id}")
-	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MGR)
+	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MANAGER)
+//	@PreAuthorize("hasRole('AddressManager')")
 	public ResponseEntity<AddressDto> deleteAddress(@PathVariable Long id) {
 		addressService.delete(id);
 		return ResponseEntity.ok(null);
 	}
 
-	// TODO fix JWT auth for POST address
 	@PostMapping
-	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MGR)
+	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MANAGER)
+//	@PreAuthorize("hasRole('AddressManager')")
 	public AddressDto createAddress(@RequestBody @Valid AddressDto addressDto) {
 		System.out.println(addressDto.toString());
 		return addressMapper.addressToDto(addressService.save(addressMapper.dtoToAddress(addressDto)));
 	}
 
-	// TODO fix JWT auth for PUT address
 	@PutMapping("/{id}")
-	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MGR)
+	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MANAGER)
+//	@PreAuthorize("hasRole('AddressManager')")
 	public ResponseEntity<AddressDto> updateAddress(@PathVariable Long id, @RequestBody @Valid AddressDto addressDto) {
 		if (addressDto == null)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No data in the BODY.");
@@ -79,10 +78,6 @@ public class AddressController {
 		Address updatedAddress = addressService.update(addressMapper.dtoToAddress(addressDto));
 		return ResponseEntity.ok(addressMapper.addressToDto(updatedAddress));
 	}
-
-	/*
-	 * TODO: JWT function to POST / DELETE / PUT methods
-	 */
 	
 //	TODO check if DTO is empty	
 	@PostMapping("/search")
