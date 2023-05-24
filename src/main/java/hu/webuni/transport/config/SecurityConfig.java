@@ -40,13 +40,13 @@ public class SecurityConfig {
 	@Bean
 	public UserDetailsService userDetailsService() {
 	    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-	    manager.createUser(User.withUsername("ADDRESS_MGR")
+	    manager.createUser(User.withUsername("address_mgr")
 	      .password(passwordEncoder().encode("address"))
-	      .roles("AddressManager")
+	      .roles("ADDRESS_MGR")
 	      .build());
-	    manager.createUser(User.withUsername("TRANSPORT_MGR")
+	    manager.createUser(User.withUsername("transport_mgr")
 	      .password(passwordEncoder().encode("transport"))
-	      .roles("TransportManager")
+	      .roles("TRANSPORT_MGR")
 	      .build());
 	    manager.createUser(User.withUsername("admin")
 	    		.password(passwordEncoder().encode("admin"))

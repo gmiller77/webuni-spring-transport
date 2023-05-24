@@ -30,6 +30,8 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/addresses")
 public class AddressController {
 
+	private static final String HAS_AUTHORITY_ROLE_ADDRESS_MGR = "hasAuthority('ROLE_ADDRESS_MGR')";
+
 	@Autowired
 	AddressService addressService;
 
@@ -50,7 +52,7 @@ public class AddressController {
 
 	// TODO fix JWT auth for DELETE address
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasAuthority('ADDRESS_MGR')")
+	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MGR)
 	public ResponseEntity<AddressDto> deleteAddress(@PathVariable Long id) {
 		addressService.delete(id);
 		return ResponseEntity.ok(null);
@@ -58,7 +60,7 @@ public class AddressController {
 
 	// TODO fix JWT auth for POST address
 	@PostMapping
-	@PreAuthorize("hasAuthority('ADDRESS_MGR')")
+	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MGR)
 	public AddressDto createAddress(@RequestBody @Valid AddressDto addressDto) {
 		System.out.println(addressDto.toString());
 		return addressMapper.addressToDto(addressService.save(addressMapper.dtoToAddress(addressDto)));
@@ -66,7 +68,7 @@ public class AddressController {
 
 	// TODO fix JWT auth for PUT address
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('ADDRESS_MGR')")
+	@PreAuthorize(HAS_AUTHORITY_ROLE_ADDRESS_MGR)
 	public ResponseEntity<AddressDto> updateAddress(@PathVariable Long id, @RequestBody @Valid AddressDto addressDto) {
 		if (addressDto == null)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No data in the BODY.");

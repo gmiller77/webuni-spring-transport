@@ -74,16 +74,6 @@
 				{
 					"name": "new address VALID",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOlsiUk9MRV9BZGRyZXNzTWFuYWdlciIsIlJPTEVfVHJhbnNwb3J0TWFuYWdlciJdLCJleHAiOjE2ODQ5MjM5NzcsImlzcyI6IlRyYW5zcG9ydEFwcCJ9.qwztwFggiYAeXJsiormL_M-19fkCO7St5gGEyJpnePKZ5Vi_cmjDZuNy5eJ54Ir2BXiFEmygHqsudy-8Co7gKQ",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -654,6 +644,36 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZGRyZXNzX21nciIsImF1dGgiOlsiUk9MRV9BRERSRVNTX01HUiJdLCJleHAiOjE2ODQ5Mzk1MjUsImlzcyI6IlRyYW5zcG9ydEFwcCJ9.m86tyTFfFeAudROz6Mkhr5CB-NeZIGGD5GIRDAezCIvhJVhHFEBUQmjnvd4ps56dKszB-xP7uUS7RXrMuGTKHg",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -877,6 +897,36 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0cmFuc3BvcnRfbWdyIiwiYXV0aCI6WyJST0xFX1RSQU5TUE9SVF9NR1IiXSwiZXhwIjoxNjg0OTM5NjE2LCJpc3MiOiJUcmFuc3BvcnRBcHAifQ.zEWVdFF5rXbV9H1PWIDogfQa9C1H4NFM-GlRmyEdUDmZ9LHFEPAlTVdewpji5d-gepklnHWfuiR-8fdV7Ka3Tw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -997,6 +1047,29 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
