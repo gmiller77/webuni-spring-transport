@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,22 +48,25 @@ public class AddressController {
 		return addressMapper.addressToDto(address);
 	}
 
-	// TODO JWT auth for DELETE address
+	// TODO fix JWT auth for DELETE address
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAuthority('ADDRESS_MGR')")
 	public ResponseEntity<AddressDto> deleteAddress(@PathVariable Long id) {
 		addressService.delete(id);
 		return ResponseEntity.ok(null);
 	}
 
-	// TODO JWT auth for POST address
+	// TODO fix JWT auth for POST address
 	@PostMapping
+	@PreAuthorize("hasAuthority('ADDRESS_MGR')")
 	public AddressDto createAddress(@RequestBody @Valid AddressDto addressDto) {
 		System.out.println(addressDto.toString());
 		return addressMapper.addressToDto(addressService.save(addressMapper.dtoToAddress(addressDto)));
 	}
 
-	// TODO JWT auth for PUT address
+	// TODO fix JWT auth for PUT address
 	@PutMapping("/{id}")
+	@PreAuthorize("hasAuthority('ADDRESS_MGR')")
 	public ResponseEntity<AddressDto> updateAddress(@PathVariable Long id, @RequestBody @Valid AddressDto addressDto) {
 		if (addressDto == null)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No data in the BODY.");
