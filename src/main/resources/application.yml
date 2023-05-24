@@ -17,7 +17,7 @@ transport:
     issuer: TransportApp
     alg: HMAC512
     secret: mysecret
-    duration: 100m
+    duration: 10m
   delayChargeList:
     - minutes: 30
       percent: 10
