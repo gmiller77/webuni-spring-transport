@@ -40,7 +40,7 @@ public class TransportPlanController {
 	@PostMapping("/{id}/delay")
 	@PreAuthorize(HAS_AUTHORITY_ROLE_TRANSPORT_MANAGER)
 //	@PreAuthorize("hasRole('TransportManager')")
-	public void registringDelay(@PathVariable long id, @Valid @RequestBody DelayDto delayDto) {
+	public void registerDelay(@PathVariable long id, @Valid @RequestBody DelayDto delayDto) {
 
 		transportPlanService.registerDelay(id, delayDto);
 	}

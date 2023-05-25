@@ -102,12 +102,14 @@ public class TransportPlanService {
 		Long income = transportPlanToUpdate.getIncome();
 		Long updatedIncome = (long) (income * (100 - reducePercent) / 100.0);
 		transportPlanToUpdate.setIncome(updatedIncome);
-		System.out.println(	"TransportPlan: " + transportPlanId +
-							" ** Milestone: " + milestoneId +
-							" ** delay: " + delayMinutes + " mins" +
-							" ** fine: -" + reducePercent + "%" +
-							" ** original income: " + income +
-							" ** reduced income: " + updatedIncome);
+		System.out.println("***********************************");
+		System.out.println(	"** TransportPlan: " + transportPlanId + "\n" +
+							"** milestone: " + milestoneId + "\n" +
+							"** delay: " + delayMinutes + " mins" + "\n" +
+							"** fine: -" + reducePercent + "%" + "\n" +
+							"** original income: " + income + "\n" +
+							"** reduced income: " + updatedIncome + "\n" +
+							"***********************************");
 		transportPlanRepository.save(transportPlanToUpdate);
 	}
 
