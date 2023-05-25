@@ -8,7 +8,6 @@ public class AddressDto {
 
 	private Long addressId;
 
-//	TODO addressDto validation messages
 	@NotBlank(message = "Country ISO code can not be null or empty.")
 	@Size(min = 2, max = 2, message = "country ISO code must be 2-character long")
 	private String countryISOCode;

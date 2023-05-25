@@ -96,7 +96,6 @@ public class TransportPlanService {
 			}
 		}
 
-		// TODO test out 5x different cases /versions/ for delay alternatives
 		int reducePercent = calculateChargePercent(delayMinutes);
 		
 		Long income = transportPlanToUpdate.getIncome();

@@ -79,7 +79,6 @@ public class AddressController {
 		return ResponseEntity.ok(addressMapper.addressToDto(updatedAddress));
 	}
 	
-//	TODO check if DTO is empty	
 	@PostMapping("/search")
 	public ResponseEntity<List<AddressDto>> getByParams(@RequestBody AddressDto addressDto, Pageable page) {
 
